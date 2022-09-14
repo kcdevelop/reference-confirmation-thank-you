@@ -14,21 +14,16 @@ window.onload = function () {
     let [recipient, answer] = data,
       confirmedMessage = 'Thanks for your assistance',
       declinedMessage = 'Thank you any way',
-      recipientText = recipient !== 'undefined' ? ' ' + recipient : '';
+      recipientText = data.length > 0 ? ' ' + recipient : '';
 
     message = recipient && answer === 'confirmed' ? `${confirmedMessage} ${recipient}.` : `${declinedMessage}${recipientText}, all the best.`;
 
     mainHeading.innerHTML = message;
 
-    /*gtag('event', 'reference_confirmation', { 'response': `{ 'recipient': '${recipient}', 'answer': '${answer}' }` });
-    gtag('event', `reference_confirmation_${recipient}_${answer}`, `{ 'response': ${answer === 'confirmed' ? 1 : 0} }`);*/
-
     gtag('event', 'reference_confirmation', {
       'event_category': 'response',
       'event_label': `{ 'recipient': '${recipient}', 'answer': '${answer}', ${answer === 'confirmed' ? 1 : 0} }`
     });
-    console.log(`{ 'recipient': '${recipient}', 'answer': '${answer}', ${answer === 'confirmed' ? 1 : 0} }`);
-
   }
 
   displayMessage(getData());
