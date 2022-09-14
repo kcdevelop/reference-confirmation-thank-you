@@ -14,8 +14,9 @@ window.onload = function () {
     let [recipient, answer] = data,
       confirmedMessage = 'Thanks for your assistance',
       declinedMessage = 'Thank you any way',
+      recipientText = recipient !== 'undefined' ? ' ' + recipient : '';
 
-      message = recipient !== 'undefined' && answer === 'confirmed' ? `${confirmedMessage} ${recipient}.` : `${declinedMessage} ${recipient}, all the best.`;
+    message = recipient && answer === 'confirmed' ? `${confirmedMessage} ${recipient}.` : `${declinedMessage}${recipientText}, all the best.`;
 
     mainHeading.innerHTML = message;
 
