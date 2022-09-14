@@ -12,10 +12,10 @@ window.onload = function () {
 
   function displayMessage(data) {
     let [recipient, answer] = data,
-      confirmedMessage = 'Thanks for you assistance',
+      confirmedMessage = 'Thanks for your assistance',
       declinedMessage = 'Thank you any way',
 
-      message = recipient && answer === 'confirmed' ? `${confirmedMessage} ${recipient}.` : `${declinedMessage} ${recipient}, all the best.`;
+      message = recipient !== 'undefined' && answer === 'confirmed' ? `${confirmedMessage} ${recipient}.` : `${declinedMessage} ${recipient}, all the best.`;
 
     mainHeading.innerHTML = message;
 
